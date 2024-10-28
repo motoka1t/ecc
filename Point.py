@@ -32,14 +32,17 @@ class Point:
         if self.x != other.x:
             s = (other.y - self.y) / (other.x - self.x)
             x = s**2 - self.x - other.x
-            y = s * (self.x - other.x) - self.y
+            y = s * (self.x - x) - self.y
             return self.__class__(x, y, self.a, self.b)
         
         if self == other:
             s = (3 * self.x**2 + self.a)
             x = s**2 + 2 * self.x
-            y = s * (self.x - other.x) - self.y
+            y = s * (self.x - x) - self.y
             return self.__class__(x, y, self.a, self.b)
         
         if self == other and self.y == 0 * self.x:
             return self.__class__(None, None, self.a, self.b)
+        
+    def __str__(self):
+        return "Point(" + str(self.x) + "," +str(self.y) + ")_" + str(self.a) + "_" + str(self.b) 
